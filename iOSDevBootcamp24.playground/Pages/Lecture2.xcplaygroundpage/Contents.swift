@@ -1,9 +1,7 @@
-import Foundation
 import UIKit
+import Foundation
 
 // Associated Values: Enums can have cases of different types by the use of associated value
-
-//MARK: - FOR LOOP
 
 let count = 100
 
