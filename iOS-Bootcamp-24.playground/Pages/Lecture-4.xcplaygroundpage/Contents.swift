@@ -404,3 +404,12 @@ let namesOfMinors = namesAndAges2
     .map { $0.key }           // Map to just the names
 
 print("Names of minors (under 18): \(namesOfMinors)")
+
+
+// OR
+
+let nameAndAges3 = ["Osama":26, "Ali":20 , "Hamza":19 , "Farhan":8]
+
+let adultPersons = nameAndAges3.filter{ $0.value > 18 }.map{ $0.key }
+
+print("adult person " , adultPersons)
