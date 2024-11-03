@@ -197,3 +197,74 @@ for playerInfo in players.keys {
 for playerInfo in players.values {
     print(playerInfo)
 }
+
+
+//MARK: - Compact Map - Higher Order Function just like map which provides transformation along with the removal of nil values
+
+let optionalNumbers: [Int?] = [1, 2, nil, 3, nil, 5, nil, 6, 7, 8, nil, nil]
+
+let nonNilNumbers = optionalNumbers.compactMap { $0 }
+
+print(nonNilNumbers)
+
+let scores = ["1", "2", "three", "four", "5", "6"]
+
+let mappedScores = scores.compactMap { Int($0) }
+
+print(mappedScores)
+
+let scores2 = ["1", "2", "three", "four", nil, nil, "5", "6"]
+
+let mappedScores2 = scores2.compactMap { $0.map  { Int($0) } }
+
+print(mappedScores2)
+
+
+var strings: [String] = ["1", "2.5", "three", "four", "5", "6"]
+
+/*
+let numbers = strings.compactMap { str in
+    if let number = Float(str) {
+        return number
+    } else {
+        return nil
+    }
+}
+ */
+
+let numbers5: [Double] = strings.compactMap { str in Double(str) }
+print(numbers)
+
+var strings2: [String?] = ["1", nil, "2.5", nil, "three", "four", "5", "6"]
+
+let numbers6 = strings.compactMap { $0 }
+
+print(numbers)
+
+
+//MARK: FlatMap
+let arrayOfArrays = [[1, 2, 3], [5, 6, 7], [7, 8, 9]]
+let flattenedArray = arrayOfArrays.flatMap { $0 }
+
+print(flattenedArray)
+
+let arrayOfOptionalArrays: [[Int?]] = [[1, 2, nil], [nil, 4, 5], [6, nil, 7]]
+let flattenedNonNilNumbers = arrayOfOptionalArrays.flatMap { $0.compactMap { $0 } }
+print(flattenedNonNilNumbers)
+
+
+//MARK: SatisfyAll
+let grades = [70, 77, 79, 81, 60]
+
+// allSatisfy ( TRUE / FALSE)
+// all cases should be true -> true
+// if anyone is false -> false
+//
+func allGraesPassing(grades: [Int]) -> Bool {
+    return grades.allSatisfy { grade in
+        grade > 70
+    }
+}
+
+let result = allGraesPassing(grades: grades)
+
